@@ -1,17 +1,41 @@
+import { createBrowserHistory } from 'history';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
+import thunk from 'redux-thunk';
 import App from './App';
+import './index.scss';
+import productReducer from './redux/product/product.reducer';
+import showcaseReducer from './redux/showcase/showcase.reducer';
 import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+const composeEnhancers =
+  (process.env.NODE_ENV === 'development'
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ trace: true, traceLimit: 25 })
+    : null) || compose;
+
+const appReducer = combineReducers({
+  showcase: showcaseReducer,
+  product: productReducer
+});
+
+const store = createStore(appReducer, composeEnhancers(applyMiddleware(thunk)));
+
+const browserHistory = createBrowserHistory();
+
+const app = (
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <App />
+    </Router>
+  </Provider>
 );
+
+ReactDOM.render(app, document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals(console.log);

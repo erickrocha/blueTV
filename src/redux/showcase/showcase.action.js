@@ -1,0 +1,3 @@
+export const SHOWCASE_BEGIN = 'SHOWCASE_BEGIN';
+export const SHOWCASE_ERROR = 'SHOWCASE_ERROR';
+export const GET_SHOWCASE = 'GET_SHOWCASE';

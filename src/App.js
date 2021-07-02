@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from 'react';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { Spinner } from './components';
+import Home from './containers/Home';
+import ErrorBoundary from './hoc/ErrorBoundary/ErrorBoundary';
+import Main from './layouts/Main/Main';
+const ProductList = React.lazy(() => import('./containers/Product/ProductList'));
+const Product = React.lazy(() => import('./containers/Product/Product'));
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={<Spinner />}>
+      <ErrorBoundary>
+        <Main>
+          <Switch>
+            <Route component={Home} exact path="/home" />
+            <Route component={ProductList} exact path="/products" />
+            <Route component={Product} exact path="/product/new" />
+            <Route component={Product} exact path="/product/edit/:id" />
+            <Redirect to="/home" />
+          </Switch>
+        </Main>
+      </ErrorBoundary>
+    </Suspense>
   );
-}
+};
 
-export default App;
+export default withRouter(App);

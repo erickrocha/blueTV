@@ -1,0 +1,5 @@
+export const PRODUCT_BEGIN = 'PRODUCT_BEGIN';
+export const PRODUCT_ERROR = 'PRODUCT_ERROR';
+export const QUERY_PRODUCTS = 'QUERY_PRODUCTS';
+export const PRODUCT_SAVED = 'PRODUCT_SAVED';
+export const GET_PRODUCT = 'GET_PRODUCT';
