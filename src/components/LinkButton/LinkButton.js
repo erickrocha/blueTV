@@ -1,17 +1,16 @@
+import { Button, Link } from '@material-ui/core';
 import React, { forwardRef } from 'react';
-import { NavLink as RouterLink } from 'react-router-dom';
-import { Button } from '@material-ui/core';
 
-const CustomRouterLink = forwardRef((props, ref) => (
+const CustomLink = forwardRef((props, ref) => (
   <div ref={ref} style={{ flexGrow: 1 }}>
-    <RouterLink {...props} />
+    <Link {...props} />
   </div>
 ));
 
 const LinkButton = props => {
-  const { size, color, variant, to, children } = props;
+  const { size, color, variant, href, children } = props;
   return (
-    <Button size={size} color={color} variant={variant} component={CustomRouterLink} to={to}>
+    <Button size={size} color={color} variant={variant} component={CustomLink} href={href}>
       {children}
     </Button>
   );

@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core';
+import LinkButton from 'components/LinkButton';
 import React from 'react';
 import logo from '../../assets/img/logo.png';
 
@@ -37,12 +38,24 @@ const TopBar = () => {
         </div>
       </div>
       <div className={classes.menu}>
-        <div className={classes.menuItem}>Regargas</div>
-        <div className={classes.menuItem}>Downloads</div>
-        <div className={classes.menuItem}>Tutorial</div>
-        <div className={classes.menuItem}>Programação TV</div>
-        <div className={classes.menuItem}>Loja</div>
-        <div className={classes.menuItem}>Contato</div>
+        <div className={classes.menuItem}>
+          <LinkButton>Recargas</LinkButton>
+        </div>
+        <div className={classes.menuItem}>
+          <LinkButton>Downloads</LinkButton>
+        </div>
+        <div className={classes.menuItem}>
+          <LinkButton>Tutorial</LinkButton>
+        </div>
+        <div className={classes.menuItem}>
+          <LinkButton>Programação TV</LinkButton>
+        </div>
+        <div className={classes.menuItem}>
+          <LinkButton>Loja</LinkButton>
+        </div>
+        <div className={classes.menuItem}>
+          <LinkButton>Contato</LinkButton>
+        </div>
       </div>
     </menu>
   );

@@ -1,5 +1,5 @@
-import axios from '../../axios.config';
-import * as events from './showcase.action';
+import firestore from '../../firebase';
+import * as events from './showcase.events';
 
 const handleError = error => {
   return {
@@ -9,10 +9,19 @@ const handleError = error => {
   };
 };
 
-export const query = () => {
+export const get = () => {
   return dispatch => {
     dispatch({ type: events.SHOWCASE_BEGIN });
-    axios.get('/produtos.json');
-    dispatch({ type: events.GET_SHOWCASE, showcase: {} });
+    firestore
+      .collection('product')
+      .get()
+      .then(querySnapshot => {
+        const products = [];
+        querySnapshot.forEach(doc => products.push({ id: doc.id, ...doc.data() }));
+        dispatch({ type: events.GET_SHOWCASE, products: products });
+      })
+      .catch(err => {
+        dispatch(handleError(err));
+      });
   };
 };
