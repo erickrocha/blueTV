@@ -1,29 +1,43 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Avatar, Card, CardContent, CardHeader, CardMedia, makeStyles, Typography } from '@material-ui/core';
 import { red } from '@material-ui/core/colors';
+import { SlideShow } from 'components';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import * as handler from '../../redux/showcase/showcase.handler';
+import * as handler from 'redux/showcase/index';
 
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(2),
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'column'
   },
   showcase: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'space-around',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    [theme.breakpoints.up('sm')]: {
+      flexDirection: 'row'
+    }
   },
   showItem: {
-    width: '23%'
+    [theme.breakpoints.up('sm')]: {
+      width: '23%'
+    },
+    width: '100%',
+    marginBottom: theme.spacing(1)
   },
   avatar: {
     backgroundColor: red[500]
   }
 }));
+
+const images = [
+  { path: '/images/image1.jpg', label: 'Imagem 1', id: 0 },
+  { path: '/images/image2.jpg', label: 'Imagem 2', id: 1 },
+  { path: '/images/image3.jpg', label: 'Imagem 3', id: 2 }
+];
 
 const Home = () => {
   const classes = useStyles();
@@ -37,7 +51,9 @@ const Home = () => {
 
   return (
     <div className={classes.root}>
-      <div className={classes.showcase}>
+      <SlideShow images={images} />
+      <br />
+      <div id="showcase" className={classes.showcase}>
         {products.map(product => (
           <Card key={product.id} className={classes.showItem}>
             <CardHeader

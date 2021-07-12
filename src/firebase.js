@@ -4,14 +4,13 @@ import 'firebase/auth';
 import 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyA8Oq2YjYzO_nK-vaYiYYQatNRBeRF-Q9w',
-  authDomain: 'bluetv-990f5.firebaseapp.com',
-  databaseURL: 'https://bluetv-990f5-default-rtdb.firebaseio.com',
-  projectId: 'bluetv-990f5',
-  storageBucket: 'bluetv-990f5.appspot.com',
-  messagingSenderId: '585673699181',
-  appId: '1:585673699181:web:57868d399c33a1f4903464',
-  measurementId: 'G-QYSZ9FWR5X'
+  apiKey: 'AIzaSyAnTrI12RRc2LI54h6IbrtkooHSA7xiI7I',
+  authDomain: 'credible-bay-319214.firebaseapp.com',
+  projectId: 'credible-bay-319214',
+  storageBucket: 'credible-bay-319214.appspot.com',
+  messagingSenderId: '788544258638',
+  appId: '1:788544258638:web:87e9bab0e56ab8177bf91f',
+  measurementId: 'G-8Q808N44WG'
 };
 
 firebase.initializeApp(firebaseConfig);

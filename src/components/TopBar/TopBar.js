@@ -19,7 +19,10 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    flexGrow: 2
+    flexGrow: 2,
+    [theme.breakpoints.down('sm')]: {
+      display: 'none'
+    }
   },
   menuItem: {
     color: '#FEFDFD',
@@ -39,7 +42,7 @@ const TopBar = () => {
       </div>
       <div className={classes.menu}>
         <div className={classes.menuItem}>
-          <LinkButton>Recargas</LinkButton>
+          <LinkButton href="#showcase">Recargas</LinkButton>
         </div>
         <div className={classes.menuItem}>
           <LinkButton>Downloads</LinkButton>
@@ -53,9 +56,7 @@ const TopBar = () => {
         <div className={classes.menuItem}>
           <LinkButton>Loja</LinkButton>
         </div>
-        <div className={classes.menuItem}>
-          <LinkButton>Contato</LinkButton>
-        </div>
+        <div className={classes.menuItem}></div>
       </div>
     </menu>
   );
