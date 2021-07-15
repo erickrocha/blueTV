@@ -1,5 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Avatar, Card, CardContent, CardHeader, CardMedia, makeStyles, Typography } from '@material-ui/core';
+import {
+  Avatar,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  CardMedia,
+  makeStyles,
+  Typography
+} from '@material-ui/core';
 import { red } from '@material-ui/core/colors';
 import { SlideShow } from 'components';
 import React, { useEffect } from 'react';
@@ -71,6 +81,14 @@ const Home = () => {
                 {product.description}
               </Typography>
             </CardContent>
+            <CardActions>
+              <Button size="small" color="primary">
+                Adicionar
+              </Button>
+              <Button size="small" color="primary">
+                Comprar
+              </Button>
+            </CardActions>
           </Card>
         ))}
       </div>

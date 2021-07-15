@@ -34,7 +34,7 @@ const SlideShow = props => {
     <div id="SlideShow" className="SlideShow">
       <div className="slideshow-container">
         {images.map(img => (
-          <div className={clsx(position === img.id ? 'show' : 'hide', 'fade')}>
+          <div key={img.id} className={clsx(position === img.id ? 'show' : 'hide', 'fade')}>
             <div className="numbertext">1 / 3</div>
             <img src={img.path} style={{ width: '100%', height: '500px' }} alt={img.label} />
             <div className="text">{img.label}</div>
