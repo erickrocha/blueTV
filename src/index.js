@@ -7,6 +7,7 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import App from './App';
 import './index.scss';
+import authReducer from './redux/auth/auth.reducer';
 import productReducer from './redux/product/product.reducer';
 import showcaseReducer from './redux/showcase/showcase.reducer';
 import reportWebVitals from './reportWebVitals';
@@ -18,10 +19,18 @@ const composeEnhancers =
 
 const appReducer = combineReducers({
   showcase: showcaseReducer,
-  product: productReducer
+  product: productReducer,
+  auth: authReducer
 });
 
-const store = createStore(appReducer, composeEnhancers(applyMiddleware(thunk)));
+const rootReducer = (state, action) => {
+  if (action.type === 'USER_LOGOUT') {
+    state = undefined;
+  }
+  return appReducer(state, action);
+};
+
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
 const browserHistory = createBrowserHistory();
 
