@@ -1,5 +1,6 @@
-import firestore from '../../firebase';
+import firebase from '../../firebase';
 import * as events from './showcase.events';
+const firestore = firebase.firestore();
 
 const handleError = error => {
   return {

@@ -1,5 +1,6 @@
-import firestore from '../../firebase';
+import firebase from '../../firebase';
 import * as action from './product.action';
+const firestore = firebase.firestore();
 
 const error = error => {
   return {
@@ -12,6 +13,10 @@ const error = error => {
 export const save = product => {
   return dispatch => {
     dispatch({ type: action.PRODUCT_BEGIN });
+
+    firestore.settings({
+      timestampsInSnapshots: true
+    });
     firestore.settings({
       timestampsInSnapshots: true
     });

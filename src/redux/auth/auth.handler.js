@@ -1,4 +1,5 @@
 import * as dateService from 'library/date-service';
+import firebase from '../../firebase';
 import * as events from './auth.events';
 
 const handleError = error => {
@@ -9,7 +10,21 @@ const handleError = error => {
   };
 };
 
-export const authenthication = (email, password) => {};
+export const authenthication = (email, password) => {
+  return dispatch => {
+    dispatch({ type: events.AUTH_BEGIN });
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(userCredential => {
+        const user = userCredential.user;
+        dispatch({ type: events.AUTHENTHICATED, token: user });
+      })
+      .catch(error => {
+        handleError(error);
+      });
+  };
+};
 
 export const logout = () => {
   return dispatch => {
