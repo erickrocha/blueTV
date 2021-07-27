@@ -96,6 +96,11 @@ const SignIn = () => {
     dispatch(handler.authenthication(formState.values.email, formState.values.password));
   };
 
+  const handleSignUp = event => {
+    event.preventDefault();
+    dispatch(handler.createUser(formState.values.email, formState.values.password));
+  };
+
   const hasError = field => (formState.touched[field] && formState.errors[field] ? true : false);
 
   return (
@@ -144,6 +149,7 @@ const SignIn = () => {
           fullWidth
           size="large"
           type="button"
+          onClick={handleSignUp}
           variant="contained">
           Cadastre se
         </Button>

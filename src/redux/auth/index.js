@@ -1,1 +1,1 @@
-export { authenthication, isAlreadyLogged, logout } from './auth.handler';
+export { authenthication, createUser, isAlreadyLogged, logout } from './auth.handler';

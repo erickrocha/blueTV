@@ -13,10 +13,6 @@ const error = error => {
 export const save = product => {
   return dispatch => {
     dispatch({ type: action.PRODUCT_BEGIN });
-
-    firestore.settings({
-      timestampsInSnapshots: true
-    });
     firestore.settings({
       timestampsInSnapshots: true
     });

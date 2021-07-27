@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import App from './App';
 import './index.scss';
 import authReducer from './redux/auth/auth.reducer';
+import customerReducer from './redux/customer/customer.reducer';
 import productReducer from './redux/product/product.reducer';
 import showcaseReducer from './redux/showcase/showcase.reducer';
 import reportWebVitals from './reportWebVitals';
@@ -20,7 +21,8 @@ const composeEnhancers =
 const appReducer = combineReducers({
   showcase: showcaseReducer,
   product: productReducer,
-  auth: authReducer
+  auth: authReducer,
+  customer: customerReducer
 });
 
 const rootReducer = (state, action) => {

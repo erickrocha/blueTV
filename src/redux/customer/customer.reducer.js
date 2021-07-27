@@ -1,29 +1,23 @@
 import { updateObject } from 'library/utility';
-import * as events from './auth.events';
+import * as events from './customer.events';
 
 const initialState = {
   loading: false,
   error: null,
-  token: null,
-  user: {},
-  userInfo: {}
+  customerId: null
 };
 
 const reducer = (state = initialState, payload) => {
   switch (payload.type) {
-    case events.AUTH_BEGIN:
+    case events.CUSTOMER_BEGIN:
       return updateObject(state, { error: null, loading: true });
-    case events.AUTHENTHICATED:
+    case events.CUSTOMER_SAVED:
       return updateObject(state, {
         loading: false,
-        token: payload.token,
-        user: payload.user,
-        userInfo: payload.userInfo
+        customerId: payload.customerId
       });
-    case events.AUTH_ERROR:
+    case events.CUSTOMER_ERROR:
       return updateObject(state, { error: payload.error, loading: false });
-    case events.LOGGED_OUT:
-      return updateObject(state, { loading: false, token: null });
     default:
       return state;
   }

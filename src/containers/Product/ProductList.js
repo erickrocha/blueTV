@@ -15,14 +15,13 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const ProductList = props => {
-  const { history } = props;
   const classes = useStyles();
 
   const [params, setParams] = useState({ name: '', category: '' });
 
-  const edit = id => {
-    history.push(`/product/edit/${id}`);
-  };
+  // const edit = id => {
+  //   history.push(`/product/edit/${id}`);
+  // };
 
   const dispatcher = useDispatch();
 

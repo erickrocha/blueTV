@@ -17,14 +17,41 @@ export const authenthication = (email, password) => {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(userCredential => {
-        const user = userCredential.user;
-        dispatch({ type: events.AUTHENTHICATED, token: user });
+        const token = userCredential.user.getIdToken();
+        dispatch({
+          type: events.AUTHENTHICATED,
+          token: token,
+          user: userCredential.user,
+          userInfo: userCredential.additionalUserInfo
+        });
       })
       .catch(error => {
         handleError(error);
       });
   };
 };
+
+export const createUser = (email, password) => {
+  return dispatch => {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(userCredential => {
+        const token = userCredential.user.getIdTokenResult();
+        dispatch({
+          type: events.AUTHENTHICATED,
+          token: token,
+          user: userCredential.user,
+          userInfo: userCredential.additionalUserInfo
+        });
+      })
+      .catch(error => {
+        handleError(error);
+      });
+  };
+};
+
+export const updateUser = user => {};
 
 export const logout = () => {
   return dispatch => {

@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Button } from '@material-ui/core';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import './SlideShow.scss';
@@ -41,12 +43,12 @@ const SlideShow = props => {
           </div>
         ))}
 
-        <a className="prev" onClick={() => onNext()} href="#">
+        <Button className="prev" onClick={() => onNext()} href="#">
           &#10094;
-        </a>
-        <a className="next" onClick={() => onPrior()} href="#">
+        </Button>
+        <Button className="next" onClick={() => onPrior()} href="#">
           &#10095;
-        </a>
+        </Button>
       </div>
       <br />
 
